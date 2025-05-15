@@ -23,7 +23,7 @@
         arrow: arrow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp MINUS &kp &kp GREATER_THAN>
+            bindings = <&macro_tap &kp MINUS &kp &kp GREATER_THAN>;
         };
     };
 
