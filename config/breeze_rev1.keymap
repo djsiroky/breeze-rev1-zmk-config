@@ -20,10 +20,11 @@
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
         };
+
         arrow: arrow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp MINUS &kp &kp GREATER_THAN>;
+            bindings = <&macro_tap>, <&kp EQUAL &kp GREATER_THAN>;
         };
     };
 
@@ -31,6 +32,7 @@
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
+
             #binding-cells = <2>;
             hold-trigger-on-release;
             tapping-term-ms = <280>;
@@ -42,6 +44,7 @@
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
+
             #binding-cells = <2>;
             hold-trigger-on-release;
             tapping-term-ms = <280>;
@@ -63,10 +66,12 @@
         };
 
         // Swapper for smart alt+tab
+
         swapper: swapper {
             compatible = "zmk,behavior-smart-toggle";
             #binding-cells = <0>;
             bindings = <&kp LALT>, <&kp TAB>;
+
             ignored-key-positions = <31 32 33 34>;
         };
 
@@ -109,11 +114,11 @@
             //                                     |            |             |            |            |  |           |             |            |             |
 
             bindings = <
-&trans         &trans     &trans           &trans    &trans      &trans  &trans          &trans          &trans        &trans     &trans  &kp K_MUTE  &trans                &trans        &trans
-&ht_sw LALT 0  &kp LA(F4) &kp LC(LS(TAB))  &kp UP    &kp LC(TAB) &trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END    &trans  &trans      &trans                &trans        &trans
-&trans         &trans     &kp LEFT         &kp DOWN  &kp RIGHT   &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans  &trans      &kp C_VOLUME_UP
-&trans         &trans     &trans           &trans    &trans      &trans  &trans          &trans          &trans        &trans     &trans  &trans      &kp C_BRIGHTNESS_DEC  &kp C_VOL_DN  &kp C_BRIGHTNESS_INC
-&trans         &trans     &trans          &trans    &trans      &trans  &trans          &trans
+&trans         &trans      &trans           &trans    &trans       &trans  &trans          &trans          &trans        &trans     &trans  &kp K_MUTE  &trans                &trans        &trans
+&ht_sw LALT 0  &kp LA(F4)  &kp LC(LS(TAB))  &kp UP    &kp LC(TAB)  &trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END    &trans  &trans      &trans                &trans        &trans
+&trans         &trans      &kp LEFT         &kp DOWN  &kp RIGHT    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans  &trans      &kp C_VOLUME_UP
+&trans         &trans      &trans           &trans    &trans       &trans  &trans          &trans          &trans        &trans     &trans  &trans      &kp C_BRIGHTNESS_DEC  &kp C_VOL_DN  &kp C_BRIGHTNESS_INC
+&trans         &trans      &trans           &trans    &trans       &trans  &trans          &trans
             >;
         };
 
@@ -137,9 +142,9 @@
         prog_layer {
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3          &trans            &trans             &trans                 &trans           &trans            &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans         &trans          &repeat_key PIPE      &MINUS            &EQUAL             &repeat_key AMPS       &trans           &trans            &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans         &trans          &repeat_key PIPE      &kp MINUS         &kp EQUAL          &repeat_key AMPS       &trans           &trans            &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp GREATER_THAN  &trans  &trans  &trans
-&trans      &trans        &trans         &trans          &kp UNDER             &BSLH             &FSLH              &kp MINUS              &trans           &trans            &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans         &trans          &kp UNDER             &kp BSLH          &kp FSLH           &kp MINUS              &trans           &trans            &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &trans         &trans          &trans                &trans            &trans             &trans
             >;
         };
