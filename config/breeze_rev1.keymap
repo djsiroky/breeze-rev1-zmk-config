@@ -14,16 +14,13 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "REPEAT_KEY";
         };
     };
 
     behaviors {
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW_MOD_LEFT";
             bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
             hold-trigger-on-release;
             tapping-term-ms = <280>;
@@ -34,9 +31,7 @@
 
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW_MOD_RIGHT";
             bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
             hold-trigger-on-release;
             tapping-term-ms = <280>;
@@ -47,14 +42,12 @@
 
         shift_caps: shift_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "SHIFT_CAPS";
             #binding-cells = <0>;
             bindings = <&sk LEFT_SHIFT>, <&caps_word>, <&kp CAPSLOCK>;
         };
 
         numpad_layer_gui: numpad_layer_gui {
             compatible = "zmk,behavior-tap-dance";
-            label = "NUMPAD_LAYER_GUI";
             #binding-cells = <0>;
             bindings = <&kp LEFT_GUI>, <&tog 2>;
         };
@@ -65,6 +58,14 @@
             #binding-cells = <0>;
             bindings = <&kp LALT>, <&kp TAB>;
             ignored-key-positions = <31 32 33 34>;
+        };
+
+        ht_sw: ht_sw {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&swapper>;
         };
     };
 
@@ -98,11 +99,11 @@
             //                                     |            |             |            |            |  |           |             |            |             |
 
             bindings = <
-&trans    &trans     &trans           &trans    &trans      &trans  &trans          &trans          &trans        &trans     &trans  &kp K_MUTE  &trans                &trans        &trans
-&swapper  &kp LA(F4) &kp LC(LS(TAB))  &kp UP    &kp LC(TAB) &trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END    &trans  &trans      &trans                &trans        &trans
-&trans    &trans     &kp LEFT         &kp DOWN  &kp RIGHT   &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans  &trans      &kp C_VOLUME_UP
-&trans    &trans     &trans           &trans    &trans      &trans  &trans          &trans          &trans        &trans     &trans  &trans      &kp C_BRIGHTNESS_DEC  &kp C_VOL_DN  &kp C_BRIGHTNESS_INC
-&trans    &trans     &trans          &trans    &trans      &trans  &trans          &trans
+&trans         &trans     &trans           &trans    &trans      &trans  &trans          &trans          &trans        &trans     &trans  &kp K_MUTE  &trans                &trans        &trans
+&ht_sw LALT 0  &kp LA(F4) &kp LC(LS(TAB))  &kp UP    &kp LC(TAB) &trans  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END    &trans  &trans      &trans                &trans        &trans
+&trans         &trans     &kp LEFT         &kp DOWN  &kp RIGHT   &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans  &trans      &kp C_VOLUME_UP
+&trans         &trans     &trans           &trans    &trans      &trans  &trans          &trans          &trans        &trans     &trans  &trans      &kp C_BRIGHTNESS_DEC  &kp C_VOL_DN  &kp C_BRIGHTNESS_INC
+&trans         &trans     &trans          &trans    &trans      &trans  &trans          &trans
             >;
         };
 
